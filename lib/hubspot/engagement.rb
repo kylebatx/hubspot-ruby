@@ -127,7 +127,7 @@ module Hubspot
         }
 
         # if the owner id has been provided, append it to the engagement
-        data[:associations][:ownerIds] = owner_id if owner_id
+        data[:associations][:ownerIds] = [owner_id] if owner_id
 
         super(data)
       end
@@ -193,7 +193,8 @@ module Hubspot
             type: 'MEETING'
           },
           associations: {
-            contactIds: [contact_id]
+            contactIds: [contact_id],
+            ownerIds: [owner_id]
           },
           metadata: {
             body: note_body,
@@ -202,9 +203,6 @@ module Hubspot
             title: note_title
           }
         }
-
-        # if the owner id has been provided, append it to the engagement
-        data[:associations][:ownerIds] = owner_id if owner_id
 
         super(data)
       end
