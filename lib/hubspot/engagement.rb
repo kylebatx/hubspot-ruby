@@ -190,7 +190,9 @@ module Hubspot
       def create!(contact_id, note_body, start_time, end_time, note_title, owner_id = nil)
         data = {
           engagement: {
-            type: 'MEETING'
+            type: 'MEETING',
+            ownerId: owner_id,
+            activityType: 'Initial Appointment'
           },
           associations: {
             contactIds: [contact_id],
